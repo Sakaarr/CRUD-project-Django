@@ -1,0 +1,45 @@
+{% extends "sakarapp/base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-4">
+        <h3 class="text-center alert alert-info">Add Student</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Add">
+        </form>
+    </div>
+    <div class="col-sm-8">
+        <h3 class="text-center alert alert-warning">Show Student Info</h3>
+        {% if info %}
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Password</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for infos in info %}
+                  
+                
+                    <tr>
+                        <th scope="row">{{infos.id}}</th>
+                        <td>{{infos.name}}</td>
+                        <td>{{infos.email}}</td>
+                        <td>{{infos.password}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+          </table>  
+
+        {% else %}
+            <h4>No Records Found</h4>
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}
+
