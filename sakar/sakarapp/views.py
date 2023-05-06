@@ -20,3 +20,16 @@ def delete_data(request , id):
         pi=User.objects.get(pk=id)
         pi.delete()
         return HttpResponseRedirect('/')
+#This will edit/update
+def update_data(request ,id):
+    if request.method=='POST':
+        pi = User.objects.get(pk=id)
+        fm = StudentRegistration(request.POST , instance=pi)
+        if fm.is_valid():
+            fm.save()
+    else:
+        if request.method =='GET':
+            pi= User.objects.get(pk=id)
+            fm= StudentRegistration(instance=pi)
+
+    return render(request , 'sakarapp/update.html', {'forms' :fm})

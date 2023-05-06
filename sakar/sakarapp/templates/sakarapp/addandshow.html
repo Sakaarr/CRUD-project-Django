@@ -33,7 +33,7 @@
                         <td>{{infos.email}}</td>
                         <td>{{infos.password}}</td>
                         <td>
-                            <a href="" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{% url 'update' infos.id %}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{% url 'delete' infos.id %}" method="POST" class="d-inline">
                                 {% csrf_token %}
                                 <input type="submit" class="btn btn-danger "value="Delete">
